@@ -1,0 +1,8 @@
+{
+    "/MApeados": {
+      "target": "http://devcfdi.sifei.com.mx:8080/SIFEI/SIFEI",
+      "secure": false,
+      "changeOrigin": "true",
+      "pathRewrite": {"^/MApeados": ""}
+    }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+  }

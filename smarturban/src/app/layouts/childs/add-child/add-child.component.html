@@ -1,0 +1,196 @@
+<br>
+
+  <form class="needs-validation" #updateUserForm="ngForm" (ngSubmit)="updateUser(updateUserForm)">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="product-detail">
+        <h5 class="product-head">Sucursal</h5>
+        <table class="table" cellspacing="0" style="max-height: 28px">
+          <tbody>
+            <tr>
+              <th scope="row">Nombre</th>
+              <td> 
+                
+                  <div class="mb-3">
+                      <input type="text" class="form-control" 
+                      id="userName" [(ngModel)]="loggedUser.userName" 
+                      name="userName" placeholder="Nombre"
+                        required>
+                  </div>
+              <!--  {{loggedUser.userName}} -->
+              
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Descripción</th>
+              <td><div class="mb-3">
+                  <input type="text" class="form-control" 
+                  id="userRfc" [(ngModel)]="loggedUser.rfc" 
+                  name="userRfc" placeholder="Descripción"
+                    required>
+              </div></td>
+            </tr>
+            <tr>
+              <th scope="row">Direccion</th>
+              <td><div class="mb-3">
+                  <input type="text" class="form-control" 
+                  id="userAddress" [(ngModel)]="loggedUser.address" 
+                  name="userAddress" placeholder="Dirección"
+                    required>
+              </div></td>
+            </tr>
+<!--
+
+            <tr>
+              <th scope="row">Colonia</th>
+              <td><div class="mb-3">
+                  <input type="text" class="form-control" 
+                  id="userCol" [(ngModel)]="loggedUser.col" 
+                  name="userCol" placeholder="colonia"
+                    required>
+              </div></td>
+            </tr>
+            <tr>
+              <th scope="row">Ciudad</th>
+              <td><div class="mb-3">
+                  <input type="text" class="form-control" 
+                  id="userCity" [(ngModel)]="loggedUser.city" 
+                  name="userCity" placeholder="Product Seller"
+                    required>
+              </div></td>
+            </tr>
+            <tr>
+                <th scope="row">Estado</th>
+                <td><div class="mb-3">
+                    <input type="text" class="form-control" 
+                    id="userState" [(ngModel)]="loggedUser.state" 
+                    name="userState" placeholder="Product Seller"
+                      required>
+                </div></td>
+              </tr>
+              <tr>
+                  <th scope="row">Pais</th>
+                  <td><div class="mb-3">
+                      <input type="text" class="form-control" 
+                      id="userCountry" [(ngModel)]="loggedUser.country" 
+                      name="userCountry" placeholder="Product Seller"
+                        required>
+                  </div></td>
+                </tr>
+                <tr>
+                    <th scope="row">C.P.</th>
+                    <td><div class="mb-3">
+                        <input type="text" class="form-control" 
+                        id="userPostalCode" [(ngModel)]="loggedUser.postalcode" 
+                        name="userPostalCode" placeholder="Product Seller"
+                          required>
+                    </div></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Serie Facturacion</th>
+                    <td><div class="mb-3">
+                        <input type="text" class="form-control" 
+                        id="userSerie" [(ngModel)]="loggedUser.serie" 
+                        name="userSerie" placeholder="Product Seller"
+                          required>
+                    </div></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Folio Facturacion</th>
+                    <td><div class="mb-3">
+                        <input type="text" class="form-control" 
+                        id="userFolio" [(ngModel)]="loggedUser.folio" 
+                        name="userFolio" placeholder="Product Seller"
+                          required>
+                    </div></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Cuenta banco</th>
+                    <td><div class="mb-3">
+                        <input type="text" class="form-control" 
+                        id="userCuentaBanco" [(ngModel)]="loggedUser.cuentabanco" 
+                        name="userCuentaBanco" placeholder="Product Seller"
+                          required>
+                    </div></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Regimen fiscal</th>
+                    <td><div class="mb-3">
+                        <input type="text" class="form-control" 
+                        id="userRegimenFiscal" [(ngModel)]="loggedUser.regimenfiscal" 
+                        name="userRegimenFiscal" placeholder="Product Seller"
+                          required>
+                    </div></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Giro Empresa</th>
+                    <td><div class="mb-3">
+                        <input type="text" class="form-control" 
+                        id="userTemplate" [(ngModel)]="loggedUser.template" 
+                        name="userTemplate" placeholder="Product Seller"
+                          required>
+                    </div></td>
+                  </tr>
+                -->
+                  <tr>
+                      <th scope="row"></th>
+                      <td><div class="mb-3">
+                          <button class="btn btn-primary btn-lg btn-block" type="submit">Actualizar</button>
+
+                      </div></td>
+                    </tr>
+                  
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  
+    <div class="col-sm-8">
+      
+      <agm-map 
+        [latitude]="lat" 
+        [longitude]="lng" 
+        [zoom]="16">
+  
+        <agm-polygon
+        [geodesic]="true"
+        [strokeColor]=""
+        [strokeOpacity]="0.3"
+        [fillOpacity]="0.0"
+        [strokeWeight]="3"
+        
+        [paths]="markersOnMap">
+            <agm-marker
+                [label]="labelOptions"
+
+                *ngFor="let marker of markersOnMap; index as i"
+                [latitude]="marker.lat" 
+                [longitude]="marker.lng"
+                [label]="marker.pos"
+                [iconUrl]="marker.image_url"> 
+
+                <agm-info-window
+                    [maxWidth]="150">
+                    <div class="container">
+                        <p class="font-weight-bold">
+                            {{marker.name}}
+                        </p>
+                        <img 
+                            src="{{marker.image_url}}" 
+                            class="img-thumbnail"
+                            *ngIf="marker.image_url.length > 5">
+                    </div>
+                </agm-info-window>
+            </agm-marker>
+          
+    </agm-polygon>
+*/
+
+      </agm-map>
+
+
+    </div>
+   </div>
+  </form> 
+

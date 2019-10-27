@@ -1,0 +1,264 @@
+<br>
+
+  <div class="row">
+       <div class="col-sm-12">
+      <div class="employee-detail">
+          <form class="needs-validation" #employeeForm="ngForm" (ngSubmit)="createEmployee(employeeForm)">
+
+            <div class="mb-3">
+              <label for="employeeAvatar">Employee Image</label>
+              <input type="text" class="form-control" id="employeeAvatar" [(ngModel)]="employee.employeeAvatar" name="employeeAvatar"
+                placeholder="Image Url">
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="employeeName">Name</label>
+                  <input type="text" class="form-control" id="employeeName" name="employeeName" [(ngModel)]="employee.employeeName" placeholder="Employee Name"
+                    value="" required>
+                  <div class="invalid-feedback">
+                    Valid first name is required.
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="employeeSurname">Surname</label>
+                    <input type="text" class="form-control" id="employeeSurname" name="employeeSurname" [(ngModel)]="employee.employeeSurname" placeholder="Employee Surname"
+                      value="" required>
+                    <div class="invalid-feedback">
+                      Valid last name is required.
+                    </div>
+                </div>
+              </div>
+
+              <div class="row">
+              <div class="col-md-6 mb-3">
+                  <label for="employeeRFC">RFC</label>
+                  <input type="text" class="form-control" id="employeeRFC" name="employeeRFC" [(ngModel)]="employee.employeeRFC" placeholder="Employee RFC"
+                    value="" required minlength="13" maxlength="13">
+                  <div class="invalid-feedback">
+                    Valid last name is required.
+                  </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                  <label for="employeeCURP">CURP</label>
+                  <input type="text" class="form-control" id="employeeCURP" name="employeeCURP" [(ngModel)]="employee.employeeCURP" placeholder="Employee CURP"
+                    value="" required minlength="21" maxlength="21">
+                  <div class="invalid-feedback">
+                    Valid last name is required.
+                  </div>
+              </div>
+              </div>
+
+            <div class="row">
+                  <div class="col-md-6 mb-3">
+                      <label for="employeeNSS">Social Security Number</label>
+                      <input type="text" class="form-control" id="employeeNSS" name="employeeNSS" [(ngModel)]="employee.employeeNSS" placeholder="Employee NSS"
+                        value="" required minlength="11" maxlength="11">
+                      <div class="invalid-feedback">
+                        Valid last name is required.
+                      </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                      <label for="employeeCorreo">Email</label>
+                      <input type="text" class="form-control" id="employeeCorreo" name="employeeCorreo" [(ngModel)]="employee.employeeCorreo" placeholder="Employee Email"
+                        value="" required>
+                      <div class="invalid-feedback">
+                        Valid last name is required.
+                      </div>
+                  </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="employeeDPT">Department</label>
+                  <input type="text" class="form-control" id="employeeDPT" name="employeeDPT" [(ngModel)]="employee.employeeDPT" placeholder="Employee Department"
+                    value="" required>
+                  <div class="invalid-feedback">
+                    Valid last name is required.
+                  </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="employeePuesto">Employment</label>
+                <input type="text" class="form-control" id="employeePuesto" name="employeePuesto" [(ngModel)]="employee.employeePuesto" placeholder="Employee Employment"
+                  value="" required>
+                <div class="invalid-feedback">
+                  Valid last name is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="employeeNDT">Worker Number</label>
+                <input type="text" class="form-control" id="employeeNDT" name="employeeNDT" [(ngModel)]="employee.employeeNDT" placeholder="Employee Worker Number"
+                  value="" required>
+                <div class="invalid-feedback">
+                  Valid last name is required.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="employeeRDC">Recruitment Regime</label>
+                  <select [(ngModel)]="employee.employeeRDC" name="employeeRDC" id="employeeRDC" class="form-control" [value]="0">
+                    <option value="" disabled selected>------ Recruitment Regime ------</option>
+                    <option *ngFor="let rols of userRols">{{rols.rol}}</option>
+                  </select>
+                <div class="invalid-feedback">
+                  Valid last name is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="employeeTDC">Type of Contract</label>
+                <select [(ngModel)]="employee.employeeTDC" name="employeeTDC" id="employeeTDC" class="form-control" [value]="0">
+                  <option value="" disabled selected>------ Type of Contract ------</option>
+                  <option *ngFor="let contract of userTips">{{contract.tip}}</option>
+                  </select>
+                <div class="invalid-feedback">
+                  Valid last name is required.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="employeeRDP">Job Risk</label>
+                <select [(ngModel)]="employee.employeeRDP" name="employeeRDP" id="employeeRDP" class="form-control" [value]="0">
+                  <option value="" disabled selected>------ Job Risk ------</option>
+                    <option [ngValue]="k.id2" *ngFor="let k of userRigs">{{k.rig}}</option>
+                  </select>
+                <div class="invalid-feedback">
+                  Valid last name is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="employeeTDJ">Type of Day</label>
+                <select [(ngModel)]="employee.employeeTDJ" name="employeeTDJ" id="employeeTDJ" class="form-control" [value]="0">
+                  <option value="" disabled selected>------ Employee type of Day ------</option>
+                  <option *ngFor="let days of userJors">{{days.jor}}</option>
+                  </select>
+                <div class="invalid-feedback">
+                  Valid last name is required.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="employeeFIRT">Initial Date of Employment Relationship</label>
+                <input type="text" class="form-control" id="employeeFIRT" name="employeeFIRT" [(ngModel)]="employee.employeeFIRT" placeholder="Employee Initial Date of Employment Relationship"
+                  value="" required>
+                <div class="invalid-feedback">
+                  Valid last name is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="employeeATGD">Antiquity</label>
+                <input type="text" class="form-control" id="employeeATGD" name="employeeATGD" [(ngModel)]="employee.employeeATGD" placeholder="Employee Antiquity"
+                  value="" required>
+                <div class="invalid-feedback">
+                  Valid last name is required.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="employeeORDR">Origin of The Resource</label>
+                <select [(ngModel)]="employee.employeeORDR" name="employeeORDR" id="employeeORDR" class="form-control" [value]="0">
+                  <option value="" disabled selected>------ Origin of The Resource ------</option>
+                  <option *ngFor="let resource of userRecs">{{resource.rec}}</option>
+                  </select>
+                <div class="invalid-feedback">
+                  Valid last name is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="employeeSALBC">Salary Base Contribution</label>
+                <input type="text" class="form-control" id="employeeSALBC" name="employeeSALBC" [(ngModel)]="employee.employeeSALBC" placeholder="Employee Salary Base Contribution"
+                  value="" required>
+                <div class="invalid-feedback">
+                  Valid last name is required.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="employeeSALDI">Daily Salary Integrated</label>
+                <input type="text" class="form-control" id="employeeSALDI" name="employeeSALDI" [(ngModel)]="employee.employeeSALDI" placeholder="Employee Daily Salary Integrated"
+                  value="" required>
+                <div class="invalid-feedback">
+                  Valid last name is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="employeePEDP">Periodicity of Payment</label>
+                <input type="text" class="form-control" id="employeePEDP" name="employeePEDP" [(ngModel)]="employee.employeePEDP" placeholder="Employee Periodicity of Payment"
+                  value="" required>
+                <div class="invalid-feedback">
+                  Valid last name is required.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="employeeBanco">Bank</label>
+                <select [(ngModel)]="employee.employeeBanco" name="employeeBanco" id="employeeBanco" class="form-control" [value]="0">
+                  <option value="" disabled selected>------ Employee Bank ------</option>
+                  <option *ngFor="let bank of userBcos">{{bank.bco}}</option>
+                  </select>
+                <div class="invalid-feedback">
+                  Valid last name is required.
+                </div>
+              </div>
+            </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="employeeClave">Bank key</label>
+              <input type="text" class="form-control" id="employeeClave" name="employeeClave" [(ngModel)]="employee.employeeClave" placeholder="Employee Bank key"
+                value="" required minlength="18" maxlength="18">
+              <div class="invalid-feedback">
+                Valid last name is required.
+              </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label for="employeeClave">Drivers License</label>
+              <input type="text" class="form-control" id="dlNumber" name="dlNumber" [(ngModel)]="employee.dlNumber" placeholder="Drivers Lisence Number"
+                value="" required minlength="18" maxlength="18">
+              <div class="invalid-feedback">
+                Valid last name is required.
+              </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label for="employeeClave">Drivers License Type</label>
+              <input type="text" class="form-control" id="dlType" name="dlType" [(ngModel)]="employee.dlType" placeholder="Drivers Lisence Type"
+                value="">
+              <div class="invalid-feedback">
+                Valid last name is required.
+              </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label for="employeeClave">D. License Expiration</label>
+              <input type="date" class="form-control" id="dlExp" name="dlExp" [(ngModel)]="employee.dlExp" placeholder="Expiration"
+                value="">
+              <div class="invalid-feedback">
+                Valid last name is required.
+              </div>
+            </div>
+
+
+          </div>
+
+            <hr class="mb-4">
+
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Add Employee</button>
+
+            </form>
+      </div>
+    </div>
+  </div>
+

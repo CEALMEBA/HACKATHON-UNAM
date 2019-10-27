@@ -1,0 +1,203 @@
+<!--
+<form>
+  <div class="row">
+
+    <img [src]="loggedUser.avatar" *ngIf="loggedUser.avatar" [alt]="loggedUser.userName" style="width: 35%; height: 35%;">
+    <img src="../../../assets/img/malecostume-512.png" *ngIf="!loggedUser.avatar" [alt]="loggedUser.userName" style="width: 35%; height: 35%;">
+  
+    <div class="col-md-8 mt-3">
+      <label for="userName">User Name</label>
+      <p style="font-size: 15px;">{{loggedUser.userName}}</p>
+    </div>
+    <div class="col-md-8 mb-3">
+      <label for="emailId">Email Id</label>
+      <p style="font-size: 15px;">{{loggedUser.emailId}}</p>
+    </div>
+  </div>
+</form>
+-->
+<br>
+<div class="container">
+  <form class="needs-validation" #updateUserForm="ngForm" (ngSubmit)="updateUser(updateUserForm)">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="product-image">
+        <!--
+        <div class="view hm-zoom z-depth-2" style="cursor: pointer">
+        -->
+          <!--
+          <img [src]="product.productImageUrl" [alt]="product.productName" width="100%" class="img-fluid rounded">
+          -->
+          <img [src]="loggedUser.avatar" *ngIf="loggedUser.avatar" [alt]="loggedUser.userName" style="width: 35%; height: 35%;">
+          <img src="../../../assets/img/malecostume-512.png" *ngIf="!loggedUser.avatar" [alt]="loggedUser.userName" style="width: 35%; height: 35%;">
+        <!--
+        </div>
+      -->
+
+        <div class="" style="margin-top:15px">
+          <ul class="list-group mb-3">
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+              <div>
+                <h6 class="my-0">Email</h6>
+              </div>
+              <span class="text-muted" style="color:crimson !important">
+                  {{loggedUser.emailId}}
+              </span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+              <div>
+                <h6 class="my-0">Administrador</h6>
+              </div>
+              <span class="text-muted" style="color:crimson !important">
+                  {{loggedUser.isAdmin}}
+              </span>
+            </li>
+          </ul>
+          <button class="btn btn-primary" (click)="addToCart(product)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="product-detail">
+        <h5 class="product-head">Datos fiscales</h5>
+        <table class="table" cellspacing="0" style="max-height: 28px">
+          <tbody>
+            <tr>
+              <th scope="row">Nombre</th>
+              <td> 
+                
+                  <div class="mb-3">
+                      <input type="text" class="form-control" 
+                      id="userName" [(ngModel)]="loggedUser.userName" 
+                      name="userName" placeholder="Product Seller"
+                        required>
+                  </div>
+              <!--  {{loggedUser.userName}} -->
+              
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">RFC</th>
+              <td><div class="mb-3">
+                  <input type="text" class="form-control" 
+                  id="userRfc" [(ngModel)]="loggedUser.rfc" 
+                  name="userRfc" placeholder="rfc"
+                    required>
+              </div></td>
+            </tr>
+            <tr>
+              <th scope="row">Direccion</th>
+              <td><div class="mb-3">
+                  <input type="text" class="form-control" 
+                  id="userAddress" [(ngModel)]="loggedUser.address" 
+                  name="userAddress" placeholder="Product Seller"
+                    required>
+              </div></td>
+            </tr>
+            <tr>
+              <th scope="row">Colonia</th>
+              <td><div class="mb-3">
+                  <input type="text" class="form-control" 
+                  id="userCol" [(ngModel)]="loggedUser.col" 
+                  name="userCol" placeholder="colonia"
+                    required>
+              </div></td>
+            </tr>
+            <tr>
+              <th scope="row">Ciudad</th>
+              <td><div class="mb-3">
+                  <input type="text" class="form-control" 
+                  id="userCity" [(ngModel)]="loggedUser.city" 
+                  name="userCity" placeholder="Product Seller"
+                    required>
+              </div></td>
+            </tr>
+            <tr>
+                <th scope="row">Estado</th>
+                <td><div class="mb-3">
+                    <input type="text" class="form-control" 
+                    id="userState" [(ngModel)]="loggedUser.state" 
+                    name="userState" placeholder="Product Seller"
+                      required>
+                </div></td>
+              </tr>
+              <tr>
+                  <th scope="row">Pais</th>
+                  <td><div class="mb-3">
+                      <input type="text" class="form-control" 
+                      id="userCountry" [(ngModel)]="loggedUser.country" 
+                      name="userCountry" placeholder="Product Seller"
+                        required>
+                  </div></td>
+                </tr>
+                <tr>
+                    <th scope="row">C.P.</th>
+                    <td><div class="mb-3">
+                        <input type="text" class="form-control" 
+                        id="userPostalCode" [(ngModel)]="loggedUser.postalcode" 
+                        name="userPostalCode" placeholder="Product Seller"
+                          required>
+                    </div></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Serie Facturacion</th>
+                    <td><div class="mb-3">
+                        <input type="text" class="form-control" 
+                        id="userSerie" [(ngModel)]="loggedUser.serie" 
+                        name="userSerie" placeholder="Product Seller"
+                          required>
+                    </div></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Folio Facturacion</th>
+                    <td><div class="mb-3">
+                        <input type="text" class="form-control" 
+                        id="userFolio" [(ngModel)]="loggedUser.folio" 
+                        name="userFolio" placeholder="Product Seller"
+                          required>
+                    </div></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Cuenta banco</th>
+                    <td><div class="mb-3">
+                        <input type="text" class="form-control" 
+                        id="userCuentaBanco" [(ngModel)]="loggedUser.cuentabanco" 
+                        name="userCuentaBanco" placeholder="Product Seller"
+                          required>
+                    </div></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Regimen fiscal</th>
+                    <td><div class="mb-3">
+                        <input type="text" class="form-control" 
+                        id="userRegimenFiscal" [(ngModel)]="loggedUser.regimenfiscal" 
+                        name="userRegimenFiscal" placeholder="Product Seller"
+                          required>
+                    </div></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Giro Empresa</th>
+                    <td><div class="mb-3">
+                        <input type="text" class="form-control" 
+                        id="userTemplate" [(ngModel)]="loggedUser.template" 
+                        name="userTemplate" placeholder="Product Seller"
+                          required>
+                    </div></td>
+                  </tr>
+
+                  <tr>
+                      <th scope="row"></th>
+                      <td><div class="mb-3">
+                          <button class="btn btn-primary btn-lg btn-block" type="submit">Actualizar</button>
+
+                      </div></td>
+                    </tr>
+                  
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  </form> 
+</div>

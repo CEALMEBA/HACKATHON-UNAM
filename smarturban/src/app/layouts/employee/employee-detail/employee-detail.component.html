@@ -1,0 +1,213 @@
+<br>
+
+
+  <div class="row color-primary">
+    <div class="col-md-4">
+      <div class="employee-image col-md-12">
+        <div class="view hm-zoom z-depth-2" style="cursor: pointer">
+          <img [src]="employee.employeeAvatar" [alt]="employee.employeeName" width="100%" class="img-fluid rounded">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <form class="needs-validation" #employeeForm="ngForm" (ngSubmit)="updateEmployee(employee.$key, employeeForm)">
+          <div class="form-row">
+              <div class="col-md-6 mb-3">
+                <label for="employeeName">Name</label>
+                <input type="text" class="form-control" id="employeeName" name="employeeName" [(ngModel)]="employee.employeeName" placeholder="Employee Name"
+                  value="{{employee.employeeName}}">
+              </div>
+              <div class="col-md-6 mb-3">
+                  <label for="employeeSurname">Surname</label>
+                  <input type="text" class="form-control" id="employeeSurname" name="employeeSurname" [(ngModel)]="employee.employeeSurname" placeholder="Employee Surname"
+                    value="{{employee.employeeSurname}}">
+              </div>
+            </div>
+
+            <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="employeeRFC">RFC</label>
+                <input type="text" class="form-control" id="employeeRFC" name="employeeRFC" [(ngModel)]="employee.employeeRFC" placeholder="Employee RFC"
+                  value="{{employee.employeeRFC}}" required minlength="13" maxlength="13">
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="employeeCURP">CURP</label>
+                <input type="text" class="form-control" id="employeeCURP" name="employeeCURP" [(ngModel)]="employee.employeeCURP" placeholder="Employee CURP"
+                  value="{{employee.employeeCURP}}" required minlength="21" maxlength="21">
+            </div>
+          </div>
+
+          <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="employeeNSS">Social Security Number</label>
+                    <input type="text" class="form-control" id="employeeNSS" name="employeeNSS" [(ngModel)]="employee.employeeNSS" placeholder="Employee NSS"
+                      value="{{employee.employeeNSS}}" required minlength="11" maxlength="11">
+
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="employeeCorreo">Email</label>
+                    <input type="text" class="form-control" id="employeeCorreo" name="employeeCorreo" [(ngModel)]="employee.employeeCorreo" placeholder="Employee Email"
+                      value="{{employee.employeeCorreo}}" required>
+                </div>
+          </div>
+
+          <div class="form-row">
+              <div class="col-md-6 mb-3">
+                <label for="employeeDPT">Department</label>
+                <input type="text" class="form-control" id="employeeDPT" name="employeeDPT" [(ngModel)]="employee.employeeDPT" placeholder="Employee Department"
+                  value="{{employee.employeeDPT}}" required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="employeePuesto">Employment</label>
+              <input type="text" class="form-control" id="employeePuesto" name="employeePuesto" [(ngModel)]="employee.employeePuesto" placeholder="Employee Employment"
+                value="{{employee.employeePuesto}}" required>
+            </div>
+
+          </div>
+
+          <div class="form-row">
+            <div class="col-md-6 mb-3">
+
+              <label for="employeeNDT">Worker Number</label>
+              <input type="text" class="form-control" id="employeeNDT" name="employeeNDT" [(ngModel)]="employee.employeeNDT" placeholder="Employee Worker Number"
+                value="{{employee.employeeNDT}}" required>
+
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="employeeRDC">Recruitment Regime</label>
+                <select [(ngModel)]="employee.employeeRDC" name="employeeRDC" id="employeeRDC" class="form-control" [value]="employee.employeeRDC">
+                  <option value="0">Employee Recruitment Regime</option>
+                  <option *ngFor="let regime of regime">{{regime.rol}}</option>
+                </select>
+              <div class="invalid-feedback">
+                Valid last name is required.
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="col-md-6 mb-3">
+              <label for="employeeTDC">Type of Contract</label>
+              <select [(ngModel)]="employee.employeeTDC" name="employeeTDC" id="employeeTDC" class="form-control" [value]="0">
+                  <option value="0">Employee Type of Contract</option>
+                <option *ngFor="let contract of contracts"> {{ contract.tip }} </option>
+                </select>
+              <div class="invalid-feedback">
+                Valid last name is required.
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="employeeRDP">Job Risk</label>
+              <select [(ngModel)]="employee.employeeRDP" name="employeeRDP" id="employeeRDP" class="form-control" [value]="0">
+                  <option value="0">Employee Job Risk</option>
+                <option *ngFor="let risk of risks">{{ risk.rig }}</option>
+                </select>
+              <div class="invalid-feedback">
+                Valid last name is required.
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="col-md-6 mb-3">
+              <label for="employeeTDJ">Type of Day</label>
+              <select [(ngModel)]="employee.employeeTDJ" name="employeeTDJ" id="employeeTDJ" class="form-control" [value]="0">
+                  <option value="0">Employee Type of Day</option>
+                <option *ngFor="let journey of journeys">{{ journey.jor }}</option>
+                </select>
+
+              <div class="invalid-feedback">
+                Valid last name is required.
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="employeeFIRT">Initial Date of Employment Relationship</label>
+              <input type="text" class="form-control" id="employeeFIRT" name="employeeFIRT" [(ngModel)]="employee.employeeFIRT" placeholder="Employee Initial Date of Employment Relationship"
+                value="{{employee.employeeFIRT}}" required>
+              <div class="invalid-feedback">
+                Valid last name is required.
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="col-md-6 mb-3">
+              <label for="employeeATGD">Antiquity</label>
+              <input type="text" class="form-control" id="employeeATGD" name="employeeATGD" [(ngModel)]="employee.employeeATGD" placeholder="Employee Antiquity"
+                value="{{employee.employeeATGD}}" required>
+
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="employeeORDR">Origin of The Resource</label>
+              <select [(ngModel)]="employee.employeeORDR" name="employeeORDR" id="employeeORDR" class="form-control" [value]="employee.employeeORDR">
+                  <option value="0">Employee Origin of The Resource</option>
+                <option *ngFor="let ingreso of ingresos">{{ingreso.rec}}</option>
+                </select>
+
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="col-md-6 mb-3">
+              <label for="employeeSALBC">Salary Base Contribution</label>
+              <input type="text" class="form-control" id="employeeSALBC" name="employeeSALBC" [(ngModel)]="employee.employeeSALBC" placeholder="Employee Salary Base Contribution"
+                value="${{employee.employeeSALBC}}" required>
+
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="employeeSALDI">Daily Salary Integrated</label>
+              <input type="text" class="form-control" id="employeeSALDI" name="employeeSALDI" [(ngModel)]="employee.employeeSALDI" placeholder="Employee Daily Salary Integrated"
+                value="${{employee.employeeSALDI}}" required>
+
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-6 mb-3">
+              <label for="employeePEDP">Periodicity of Payment</label>
+              <input type="text" class="form-control" id="employeePEDP" name="employeePEDP" [(ngModel)]="employee.employeePEDP" placeholder="Employee Periodicity of Payment"
+                value="{{employee.employeePEDP}}" required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="employeeBanco">Bank</label>
+              <select [(ngModel)]="employee.employeeBanco" name="employeeBanco" id="employeeBanco" class="form-control" [value]="employee.employeeBanco">
+                  <option value="0">Employee Bank</option>
+                  <option *ngFor="let bank of banks">{{bank.bco}}</option>
+                </select>
+            </div>
+          </div>
+
+        <div class="form-row">
+          <div class="col-md-6 mb-3">
+            <label for="employeeClave">Bank key</label>
+            <input type="text" class="form-control" id="employeeClave" name="employeeClave" [(ngModel)]="employee.employeeClave" placeholder="Employee Bank key"
+              value="{{employee.employeeClave}}" required minlength="18" maxlength="18">
+
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label for="employeeClave">Drivers License</label>
+            <input type="text" class="form-control" id="dlNumber" name="dlNumber" [(ngModel)]="employee.dlNumber" placeholder="Drivers Lisence Number"
+              value="{{employee.dlNumber}}" required minlength="18" maxlength="18">
+
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label for="employeeClave">Drivers License Type</label>
+            <input type="text" class="form-control" id="dlType" name="dlType" [(ngModel)]="employee.dlType" placeholder="Drivers Lisence Type"
+              value="{{employee.dlType}}">
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label for="employeeClave">D. License Expiration</label>
+            <input type="text" class="form-control" id="dlExp" name="dlExp" [(ngModel)]="employee.dlExp" placeholder="Expiration"
+              value="{{employee.dlExp}}">
+          </div>
+        </div>
+
+          <hr class="mb-4">
+
+          <button class="btn btn-primary btn-lg btn-block" type="submit">UPDATE Employee</button>
+        </form>
+    </div>
+

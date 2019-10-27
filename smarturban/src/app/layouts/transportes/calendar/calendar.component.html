@@ -1,0 +1,463 @@
+<div class="container">
+  <div class="car-info">
+    <p>ID de la Unidad: {{ this.unitid }}</p>
+  </div>
+    <div class="row">
+        <div class="example-container">
+            <h2 class="size">ROUTES:</h2>
+
+            <div cdkDropList #rutasList="cdkDropList" [cdkDropListData]="routeList" [cdkDropListConnectedTo]="[
+          lunesList,
+          martesList,
+          miercolesList,
+          juevesList,
+          viernesList,
+          sabadoList,
+          domingoList
+        ]" class="example-list" (cdkDropListDropped)="drop($event)">
+                <div class="example-box" *ngFor="let item of routeList" cdkDrag>
+                    <div class="card-body">
+                        <div class="d-flex flex-row bd-highlight3">
+                            <div class="bd-highlight">
+                                <h6 class="card-subtitle mb-2 text-muted">
+                                    {{ item.nombrekey }}
+                                </h6>
+                            </div>
+                        </div>
+                        <p style="font-size: 12px">
+                            Duration:
+                            <span style="color: gray">{{ item.duration }} min.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="example-container">
+            <h2 class="size">Monday</h2>
+
+            <div cdkDropList #lunesList="cdkDropList" [cdkDropListData]="lunes" [cdkDropListConnectedTo]="[
+          rutasList,
+          martesList,
+          miercolesList,
+          juevesList,
+          viernesList,
+          sabadoList,
+          domingoList
+        ]" class="example-list" (cdkDropListDropped)="drop($event)">
+                <div class="example-box" *ngFor="let item of lunes" cdkDrag>
+                    {{ item.nombrekey }}
+                    <button type="button" class="btn-calendar" data-toggle="modal" data-target="#Modal">Travel-Date</button>
+                    <!-- MODAL -->
+                    <form (ngSubmit)="saveTravelDate(travelForm)" class="needs-validation" #travelForm="ngForm">
+                        <div class="modal fade ventana-modal" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Select Travel Times</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        <div class="form-row">
+                                            <div class="col-md-12">
+                                                <div class="col-md-12 mb-3">
+                                                    <label for="salida">Hora Salida:</label>
+                                                    <input type="text" class="form-control" id="salida" name="salida" placeholder="Hora de Salida" [(ngModel)]="travelDate['0']" required />
+                                                    <div class="invalid-feedback">
+                                                        La hora de Salida es requerida.
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12 mb-3">
+                                                    <label for="llegada">Hora Llegada:</label>
+                                                    <input type="text" class="form-control" id="llegada" name="llegada" placeholder="Hora de Llegada" [(ngModel)]="travelDate['1']" required />
+                                                    <div class="invalid-feedback">
+                                                        La Hora de llegada es requerida.
+                                                    </div>
+                                                </div>
+                                                <button class="btn btn-primary" type="submit">Save</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!---->
+                </div>
+            </div>
+        </div>
+
+        <div class="example-container">
+            <h2 class="size">Tuesday</h2>
+
+            <div cdkDropList #martesList="cdkDropList" [cdkDropListData]="martes" [cdkDropListConnectedTo]="[
+          rutasList,
+          lunesList,
+          miercolesList,
+          juevesList,
+          viernesList,
+          sabadoList,
+          domingoList
+        ]" class="example-list" (cdkDropListDropped)="drop($event)">
+                <div class="example-box" *ngFor="let item of martes" cdkDrag>
+                    {{ item.nombrekey }}
+                    <button type="button" class="btn-calendar" data-toggle="modal" data-target="#Modal" data-whatever="@fat">Travel-Date</button>
+                    <!-- MODAL -->
+                    <form (ngSubmit)="saveTravelDate(travelForm)" class="needs-validation" #travelForm="ngForm">
+                        <div class="modal fade ventana-modal" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Select Travel Times</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        <div class="form-row">
+                                            <div class="col-md-12">
+                                                <div class="col-md-12 mb-3">
+                                                    <label for="salida">Hora Salida:</label>
+                                                    <input type="text" class="form-control" id="salida" name="salida" placeholder="Hora de Salida" [(ngModel)]="travelDate['0']" required />
+                                                    <div class="invalid-feedback">
+                                                        La hora de Salida es requerida.
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12 mb-3">
+                                                    <label for="llegada">Hora Llegada:</label>
+                                                    <input type="text" class="form-control" id="llegada" name="llegada" placeholder="Hora de Llegada" [(ngModel)]="travelDate['1']" required />
+                                                    <div class="invalid-feedback">
+                                                        La Hora de llegada es requerida.
+                                                    </div>
+                                                </div>
+                                                <button class="btn btn-primary" type="submit">Save</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!---->
+                </div>
+            </div>
+        </div>
+
+        <div class="example-container">
+            <h2 class="size">Wednesday</h2>
+
+            <div cdkDropList #miercolesList="cdkDropList" [cdkDropListData]="miercoles" [cdkDropListConnectedTo]="[
+          rutasList,
+          lunesList,
+          martesList,
+          juevesList,
+          viernesList,
+          sabadoList,
+          domingoList
+        ]" class="example-list" (cdkDropListDropped)="drop($event)">
+                <div class="example-box" *ngFor="let item of miercoles" cdkDrag>
+                    {{ item.nombrekey }}
+                    <button type="button" class="btn-calendar" data-toggle="modal" data-target="#Modal" data-whatever="@fat">Travel-Date</button>
+                    <!-- MODAL -->
+                    <form (ngSubmit)="saveTravelDate(travelForm)" class="needs-validation" #travelForm="ngForm">
+                        <div class="modal fade ventana-modal" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Select Travel Times</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        <div class="form-row">
+                                            <div class="col-md-12">
+                                                <div class="col-md-12 mb-3">
+                                                    <label for="salida">Hora Salida:</label>
+                                                    <input type="text" class="form-control" id="salida" name="salida" placeholder="Hora de Salida" [(ngModel)]="travelDate['0']" required />
+                                                    <div class="invalid-feedback">
+                                                        La hora de Salida es requerida.
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12 mb-3">
+                                                    <label for="llegada">Hora Llegada:</label>
+                                                    <input type="text" class="form-control" id="llegada" name="llegada" placeholder="Hora de Llegada" [(ngModel)]="travelDate['1']" required />
+                                                    <div class="invalid-feedback">
+                                                        La Hora de llegada es requerida.
+                                                    </div>
+                                                </div>
+                                                <button class="btn btn-primary" type="submit">Save</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!---->
+                </div>
+            </div>
+        </div>
+
+        <div class="example-container">
+            <h2 class="size">Thursday</h2>
+
+            <div cdkDropList #juevesList="cdkDropList" [cdkDropListData]="jueves" [cdkDropListConnectedTo]="[
+          rutasList,
+          lunesList,
+          martesList,
+          miercolesList,
+          viernesList,
+          sabadoList,
+          domingoList
+        ]" class="example-list" (cdkDropListDropped)="drop($event)">
+                <div class="example-box" *ngFor="let item of jueves" cdkDrag>
+                    {{ item.nombrekey }}
+                    <button type="button" class="btn-calendar" data-toggle="modal" data-target="#Modal" data-whatever="@fat">Travel-Date</button>
+                    <!-- MODAL -->
+                    <form (ngSubmit)="saveTravelDate(travelForm)" class="needs-validation" #travelForm="ngForm">
+                        <div class="modal fade ventana-modal" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Select Travel Times</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        <div class="form-row">
+                                            <div class="col-md-12">
+                                                <div class="col-md-12 mb-3">
+                                                    <label for="salida">Hora Salida:</label>
+                                                    <input type="text" class="form-control" id="salida" name="salida" placeholder="Hora de Salida" [(ngModel)]="travelDate['0']" required />
+                                                    <div class="invalid-feedback">
+                                                        La hora de Salida es requerida.
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12 mb-3">
+                                                    <label for="llegada">Hora Llegada:</label>
+                                                    <input type="text" class="form-control" id="llegada" name="llegada" placeholder="Hora de Llegada" [(ngModel)]="travelDate['1']" required />
+                                                    <div class="invalid-feedback">
+                                                        La Hora de llegada es requerida.
+                                                    </div>
+                                                </div>
+                                                <button class="btn btn-primary" type="submit">Save</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!---->
+                </div>
+            </div>
+        </div>
+
+        <div class="example-container">
+            <h2 class="size">Friday</h2>
+
+            <div cdkDropList #viernesList="cdkDropList" [cdkDropListData]="viernes" [cdkDropListConnectedTo]="[
+          rutasList,
+          lunesList,
+          martesList,
+          miercolesList,
+          juevesList,
+          sabadoList,
+          domingoList
+        ]" class="example-list" (cdkDropListDropped)="drop($event)">
+                <div class="example-box" *ngFor="let item of viernes" cdkDrag>
+                    {{ item.nombrekey }}
+                    <button type="button" class="btn-calendar" data-toggle="modal" data-target="#Modal" data-whatever="@fat">Travel-Date</button>
+                    <!-- MODAL -->
+                    <form (ngSubmit)="saveTravelDate(travelForm)" class="needs-validation" #travelForm="ngForm">
+                        <div class="modal fade ventana-modal" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Select Travel Times</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        <div class="form-row">
+                                            <div class="col-md-12">
+                                                <div class="col-md-12 mb-3">
+                                                    <label for="salida">Hora Salida:</label>
+                                                    <input type="text" class="form-control" id="salida" name="salida" placeholder="Hora de Salida" [(ngModel)]="travelDate['0']" required />
+                                                    <div class="invalid-feedback">
+                                                        La hora de Salida es requerida.
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12 mb-3">
+                                                    <label for="llegada">Hora Llegada:</label>
+                                                    <input type="text" class="form-control" id="llegada" name="llegada" placeholder="Hora de Llegada" [(ngModel)]="travelDate['1']" required />
+                                                    <div class="invalid-feedback">
+                                                        La Hora de llegada es requerida.
+                                                    </div>
+                                                </div>
+                                                <button class="btn btn-primary" type="submit">Save</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!---->
+                </div>
+            </div>
+        </div>
+
+        <div class="example-container">
+            <h2 class="size">Saturday</h2>
+
+            <div cdkDropList #sabadoList="cdkDropList" [cdkDropListData]="sabado" [cdkDropListConnectedTo]="[
+          rutasList,
+          lunesList,
+          martesList,
+          miercolesList,
+          juevesList,
+          viernesList,
+          domingoList
+        ]" class="example-list" (cdkDropListDropped)="drop($event)">
+                <div class="example-box" *ngFor="let item of sabado" cdkDrag>
+                    {{ item.nombrekey }}
+                    <button type="button" class="btn-calendar" data-toggle="modal" data-target="#Modal" data-whatever="@fat">Travel-Date</button>
+                    <!-- MODAL -->
+                    <form (ngSubmit)="saveTravelDate(travelForm)" class="needs-validation" #travelForm="ngForm">
+                        <div class="modal fade ventana-modal" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Select Travel Times</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        <div class="form-row">
+                                            <div class="col-md-12">
+                                                <div class="col-md-12 mb-3">
+                                                    <label for="salida">Hora Salida:</label>
+                                                    <input type="text" class="form-control" id="salida" name="salida" placeholder="Hora de Salida" [(ngModel)]="travelDate['0']" required />
+                                                    <div class="invalid-feedback">
+                                                        La hora de Salida es requerida.
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12 mb-3">
+                                                    <label for="llegada">Hora Llegada:</label>
+                                                    <input type="text" class="form-control" id="llegada" name="llegada" placeholder="Hora de Llegada" [(ngModel)]="travelDate['1']" required />
+                                                    <div class="invalid-feedback">
+                                                        La Hora de llegada es requerida.
+                                                    </div>
+                                                </div>
+                                                <button class="btn btn-primary" type="submit">Save</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!---->
+                </div>
+            </div>
+        </div>
+
+        <div class="example-container">
+            <h2 class="size">Sunday</h2>
+
+            <div cdkDropList #domingoList="cdkDropList" [cdkDropListData]="domingo" [cdkDropListConnectedTo]="[
+          rutasList,
+          lunesList,
+          martesList,
+          miercolesList,
+          juevesList,
+          viernesList,
+          sabadoList
+        ]" class="example-list" (cdkDropListDropped)="drop($event)">
+                <div class="example-box" *ngFor="let item of domingo" cdkDrag>
+                    {{ item.nombrekey }}
+                    <button type="button" class="btn-calendar" data-toggle="modal" data-target="#Modal" data-whatever="@fat">Travel-Date</button>
+                    <!-- MODAL -->
+                    <form (ngSubmit)="saveTravelDate(travelForm)" class="needs-validation" #travelForm="ngForm">
+                        <div class="modal fade ventana-modal" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Select Travel Times</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        <div class="form-row">
+                                            <div class="col-md-12">
+                                                <div class="col-md-12 mb-3">
+                                                    <label for="salida">Hora Salida:</label>
+                                                    <input type="text" class="form-control" id="salida" name="salida" placeholder="Hora de Salida" [(ngModel)]="travelDate['0']" required />
+                                                    <div class="invalid-feedback">
+                                                        La hora de Salida es requerida.
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12 mb-3">
+                                                    <label for="llegada">Hora Llegada:</label>
+                                                    <input type="text" class="form-control" id="llegada" name="llegada" placeholder="Hora de Llegada" [(ngModel)]="travelDate['1']" required />
+                                                    <div class="invalid-feedback">
+                                                        La Hora de llegada es requerida.
+                                                    </div>
+                                                </div>
+                                                <button class="btn btn-primary" type="submit">Save</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!---->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

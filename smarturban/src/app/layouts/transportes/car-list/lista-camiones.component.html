@@ -1,0 +1,103 @@
+<br>
+
+
+  <div class="row" *ngIf="authService.isAdmin()">
+
+    <div class="col-sm">
+      <!--
+      <div class="float-right">
+        <button type="button" class="btn btn-primary waves-light" data-toggle="modal" data-target="#exampleModalLong">
+          Add Product
+        </button>
+      </div>
+    -->
+    <div class="float-right btn btn-primary add-car__btn">
+          <a [routerLink]="['/buses/add-bus']" routerLinkActive="router-link-active">
+            Add new bus</a>
+    </div>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2">
+      <div class="form-group">
+        <label for="brand_select">Filter:</label>
+        <select class="form-control" name="" id="brand_select" [(ngModel)]="selectedBrand">
+          <option>City</option>
+          <option>Zone</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-9">
+
+      <div class="container">
+        <app-card-loader [loop]="3" [height]="400" *ngIf="loading"></app-card-loader>
+        <div class="row" *ngIf="!loading">
+          <!-- List of Products -->
+          <div class="col-sm-3 mb-2" *ngFor="let product of productList | filterByBrand: selectedBrand | paginate: { itemsPerPage: 6, currentPage: page }">
+            <div class="item">
+              <div class=" mb-r">
+                <!--Card-->
+                <div class="card card-cascade wider">
+                  <!--Card image-->
+                  <a [routerLink]="['/buses/cars', product.$key]">
+                    <div class="view overlay hm-white-slight">
+                      <img [src]="product.clientImageUrl" class="img-fluid" alt="" width="360px" height="640px">
+                      <a>
+                        <div class="mask waves-effect waves-light" mdbRippleRadius></div>
+                      </a>
+                    </div>
+                  </a>
+                  <!--/.Card image-->
+                  <!--Card content-->
+                  <div class="card-body text-center no-padding">
+                    <!--Category & Title-->
+                    <a class="text-muted">
+                      <h5>{{ product.description }}</h5>
+                    </a>
+                    <p class="card-title">
+                      <strong>
+                        <a [routerLink]="['/buses/cars', product.$key]" routerLinkActive="router-link-active"> Driver-ID: {{
+                          product.driverid }}</a>
+                      </strong>
+                    </p>
+                    <!--Description-->
+                    <p class="card-text"> Unit-ID: {{ product.unitid }}
+                    </p>
+                    <!--Card footer     [routerLink]="['/buses/add-bus']"-->
+                    <div class="card-footer">
+                      <span class="right margin">
+                        <a placement="top" mdbTooltip="Modify" container="body" [routerLink]="['/buses/cars', product.$key]" >
+                          <i class="fa fa-pencil"></i>
+                        </a>
+
+                        <a placement="top" mdbTooltip="Remove Car" container="body" *ngIf="authService.isAdmin()"
+                          (click)="deleteBus(product.$key)">
+                          <i class="fa fa-trash"></i>
+                        </a>
+                      </span>
+                    </div>
+
+                  </div>
+                  <!--/.Card content-->
+
+                </div>
+                <!--/.Card-->
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Pagination -->
+        <div class="text-center mt-3">
+          <pagination-controls (pageChange)="page = $event"></pagination-controls>
+        </div>
+      </div>
+      <!--/.Card-->
+    </div>
+  </div>
+
+<!--
+<app-add-product></app-add-product>
+-->

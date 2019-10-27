@@ -1,0 +1,183 @@
+<br>
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-4">
+            <img src="" alt="Imagen del camion">
+        </div>
+
+        <div class="col-md-8">
+
+            <div class="product-detail">
+                <h5 class="product-head text-center">Car Details</h5>
+                <a class="" [routerLink]="['/buses/calendar', product.$key]"><i class="fa fa-calendar" style="font-size: 15px;"></i></a>
+                <br>
+                <br>
+                <form class="needs-validation" #cardetailsForm="ngForm" (ngSubmit)="updateBus(product.$key, cardetailsForm)">
+
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3 ">
+                            <div class="col-md-12 mb-3">
+                                <label for="unitid">Unit ID </label>
+                                <input type="text" class="form-control" id="unitid" name="unitid" [(ngModel)]="product.unitid" placeholder="" value="{{product.unitid}}" required>
+                            </div>
+
+                            <div class="col-md-12 mb-3">
+                                <label for="description">Description:</label>
+                                <input type="text" class="form-control" id="description" name="description" [(ngModel)]="product.description" placeholder="" value="{{product.description}}" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="col-md-12 mb-3">
+                                <label for="driverid">Driver ID</label>
+                                <input type="text" class="form-control" id="driverid" name="driverid" [(ngModel)]="product.driverid" placeholder="" value="{{product.driverid}}" required>
+                            </div>
+
+                            <div class="col-md-12 mb-3">
+                                <label for="lplate">License Plate</label>
+                                <input type="text" class="form-control" id="lplate" name="lplate" [(ngModel)]="product.lplate" placeholder="" value="{{product.lplate}}" required>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary float-right" type="submit">UPDATE BUS</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!--      TABLE
+        <table class="table margin-top">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Source:</th>
+                    <th scope="col">Target:</th>
+                    <th scope="col">Duration:</th>
+                    <th scope="col"></th>
+                    <th scope="col">
+                        <a [routerLink]="">Go To Calendar</a>
+                    </th>
+
+                </tr>
+            </thead>
+
+            <tbody *ngFor="let route of routeList">
+                <tr>
+
+                    <td>{{ route.source | uppercase }}</td>
+                    <td>{{ route.target | uppercase }}</td>
+                    <td>{{ route.duration }}</td>
+                    <td>
+                        <button class="btn btn-primary" type="submit">ADD ROUTE</button>
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+        </table>-->
+
+
+
+
+        <!--<div class="col-md-10">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="d-flex flex-row bd-highlight3" style="width: 300px">
+              <div class="bd-highlight">
+                <h4>MONDAY</h4>
+              </div>
+              <div class="bd-highlight ml-auto">
+                <span class="badge badge-secondary">{{todo.length}}</span>
+              </div>
+            </div>
+            <div cdkDropList id="todoList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="['inProgressList']" class="example-list"
+                 (cdkDropListDropped)="drop($event)">
+              <div class="card example-box" *ngFor="let item of todo" cdkDrag (click)="onSelect(item)">
+                <div class="card-body">
+                  <div class="d-flex flex-row bd-highlight3">
+                    <div class="bd-highlight">
+                      <h6 class="card-subtitle mb-2 text-muted">{{item.name}}</h6>
+                    </div>
+                    <div class="bd-highlight ml-auto edit-icon">
+                      <a href="javascript:;;"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                    </div>
+                  </div>
+                  &lt;!&ndash; <p class="card-text">{{cards.description}}.</p> &ndash;&gt;
+                  <p style="font-size: 12px">Created: <span style="color: gray">{{item.createdOn | momentTimeAgo}}</span></p>
+                  <span style="color: gray" *ngFor="let assignie of item.assignies"><img src="https://www.shareicon.net/download/2015/09/18/103157_man_512x512.png"
+                                                                                         [alt]="assignie.userId" width="40px" height="40px"></span>
+                </div>
+              </div>
+            </div>
+          </div>&lt;!&ndash;-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; FIRST COLUMN &#45;&#45;&ndash;&gt;
+
+          <div class="col-md-4">
+            <div class="d-flex flex-row bd-highlight3" style="width: 300px">
+              <div class="bd-highlight">
+                <h4>In Progress</h4>
+              </div>
+              <div class="bd-highlight ml-auto">
+                <span class="badge badge-secondary">{{inProgress.length}}</span>
+              </div>
+            </div>
+
+            <div cdkDropList id="inProgressList" [cdkDropListData]="inProgress" [cdkDropListConnectedTo]="['todoList', 'completedList']"
+                 class="example-list" (cdkDropListDropped)="drop($event)">
+              <div class="card example-box" *ngFor="let item of inProgress" (click)="onSelect(item)" cdkDrag>
+                <div class="card-body">
+                  <div class="d-flex flex-row bd-highlight3">
+                    <div class="bd-highlight">
+                      <h6 class="card-subtitle mb-2 text-muted">{{item.name}}</h6>
+                    </div>
+                    <div class="bd-highlight ml-auto edit-icon">
+                      <a href="javascript:;;"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                    </div>
+                  </div>
+                  &lt;!&ndash; <p class="card-text">{{cards.description}}.</p> &ndash;&gt;
+                  <p style="font-size: 12px">Created: <span style="color: gray">{{item.createdOn
+                    | momentTimeAgo}}</span></p>
+                  <span style="color: gray" *ngFor="let assignie of item.assignies"><img src="https://www.shareicon.net/download/2015/09/18/103157_man_512x512.png" [alt]="assignie.userId" width="40px" height="40px"></span>
+                </div>
+              </div>
+            </div>
+          </div>&lt;!&ndash;&#45;&#45;&#45;&#45; SECOND COLUMN -&ndash;&gt;
+
+          <div class="col-md-4">
+            <div class="d-flex flex-row bd-highlight3" style="width: 300px">
+              <div class="bd-highlight">
+                <h4>Completed</h4>
+              </div>
+              <div class="bd-highlight ml-auto">
+                <span class="badge badge-secondary">{{completed.length}}</span>
+              </div>
+            </div>
+
+            <div cdkDropList id="completedList" [cdkDropListData]="completed" [cdkDropListConnectedTo]="['inProgressList']"
+                 class="example-list" (cdkDropListDropped)="drop($event)">
+              <div class="card example-box" *ngFor="let item of completed" (click)="onSelect(item)" cdkDrag>
+                <div class="card-body">
+                  <div class="d-flex flex-row bd-highlight3">
+                    <div class="bd-highlight">
+                      <h6 class="card-subtitle mb-2 text-muted">{{item.name}}</h6>
+                    </div>
+                    <div class="bd-highlight ml-auto edit-icon">
+                      <a href="javascript:;;"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                    </div>
+                  </div>
+                  &lt;!&ndash; <p class="card-text">{{cards.description}}.</p> &ndash;&gt;
+                  <p style="font-size: 12px">Created: <span style="color: gray">{{item.createdOn
+                    | momentTimeAgo}}</span></p>
+                  <span style="color: gray" *ngFor="let assignie of item.assignies"><img src="https://www.shareicon.net/download/2015/09/18/103157_man_512x512.png" [alt]="assignie.userId" width="40px" height="40px"></span>
+                </div>
+              </div>
+            </div>
+          </div>&lt;!&ndash; THIRD COLUMN &ndash;&gt;
+
+        </div>
+      </div>-->
+
+
+    </div>
+
+</div>

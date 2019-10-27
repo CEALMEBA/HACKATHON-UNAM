@@ -1,0 +1,62 @@
+<form class="needs-validation" #alltransportesForm="ngForm" (ngSubmit)="createRoutes(alltransportesForm)">
+<div class="form-row center">
+
+  <div class="col-md-6 mb-3">
+    <label for="unitidName">Salida:</label>
+    <input type="text" class="form-control" id="source" name="source" [(ngModel)]="route.source" placeholder="Lugar De Salida"
+      value="" required>
+    <div class="invalid-feedback">
+      Valid Unit-ID is required.
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <label for="description">Llegada:</label>
+    <input type="text" class="form-control" id="target" name="target" [(ngModel)]="route.target" placeholder="Lugar De Llegada"
+      value="" required>
+    <div class="invalid-feedback">
+      Valid Description is required.
+    </div>
+  </div>
+<!--nombre clave-->
+<div class="col-md-4 mb-3">
+  <label for="nombrekey">Nombre clave:</label>
+  <input type="text" class="form-control" id="nombrekey" name="nombrekey" [(ngModel)]="route.nombrekey" placeholder="nombre clave de la ruta"
+    value="" required>
+  <div class="invalid-feedback">
+    Valid Nombre key is required.
+  </div>
+</div>
+
+
+  <div class="col-md-4 mb-3">
+    <label for="driverid">Duracion:</label>
+    <input type="number" class="form-control" id="duration" name="duration" [(ngModel)]="route.duration" placeholder="Duracion"
+      value="" required>
+    <div class="invalid-feedback">
+      Valid Driver-ID is required.
+    </div>
+  </div>
+
+  <div class="col-md-4 mb-3">
+      <label for="driverid">Status:</label>
+      <input type="number" class="form-control" id="status" name="status" [(ngModel)]="route.status" placeholder="Status"
+        value="" required>
+      <div class="invalid-feedback">
+        Valid Driver-ID is required.
+      </div>
+    </div>
+<!--
+<button class="btn btn-primary" type="submit">ADD ROUTES</button>
+-->
+<div class="container-fluid h-100"> 
+  <div class="row w-100 align-items-center">
+    <div class="col text-center">
+      <button class="btn btn-primary regular-button" type="submit">ADD ROUTES </button>
+    </div>	
+  </div>
+</div>
+
+</div>
+</form>
+

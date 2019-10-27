@@ -1,0 +1,80 @@
+<div class="container">
+    <p class="text-center margin-top">
+        Fill the form to add a new Bus
+    </p>
+    <hr />
+    <form class="needs-validation" #alltransportesForm="ngForm" (ngSubmit)="createBus(alltransportesForm)">
+        <div class="form-row">
+            <div class="col-md-4">
+                <div class="add-photo"></div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Upload</span>
+                    </div>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputGroupFile01" />
+                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8" style="padding: 15px;">
+              <div class="form-row">
+                <div class="col-md-6">
+                    <label for="unitidName">Unit ID</label>
+                    <input type="text" class="form-control" id="unitid" name="unitid" [(ngModel)]="bus.unitid" placeholder="Unit ID" value="" required />
+                    <div class="invalid-feedback">
+                        Valid Unit-ID is required.
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="driverid">Driver ID</label>
+                    <input type="text" class="form-control" id="driverid" name="driverid" [(ngModel)]="bus.driverid" placeholder="Unit ID" value="" required />
+                    <div class="invalid-feedback">
+                        Valid Driver-ID is required.
+                    </div>
+                </div>
+
+              </div>
+                <div class="col-md-12" style="padding: 0;">
+                    <label for="description">Description:</label>
+                    <input type="text" class="form-control" id="description" name="description" [(ngModel)]="bus.description" placeholder="Description" value="" required />
+                    <div class="invalid-feedback">
+                        Valid Description is required.
+                    </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="col-md-4">
+                      <label for="placas">License Plate</label>
+                      <input type="text" class="form-control" id="placas" name="placas" [(ngModel)]="bus.lplate" placeholder="License Plate" value="" required />
+                      <div class="invalid-feedback">
+                          Valid License Plate is required.
+                      </div>
+                  </div>
+
+                  <div class="col-md-4">
+                      <label for="placas">City</label>
+                      <input type="text" class="form-control" id="city" name="city" [(ngModel)]="bus.city" placeholder="City" value="" required />
+                      <div class="invalid-feedback">
+                          Valid City is required.
+                      </div>
+                  </div>
+
+                  <div class="col-md-4">
+                      <label for="placas">Zone</label>
+                      <input type="text" class="form-control" id="zone" name="zone" [(ngModel)]="bus.zone" placeholder="Zone" value="" required />
+                      <div class="invalid-feedback">
+                          Valid Zone is required.
+                      </div>
+                  </div>
+
+                </div>
+
+
+
+                <button class="btn btn-primary float-right" type="submit">ADD BUS</button>
+            </div>
+        </div>
+    </form>
+</div>

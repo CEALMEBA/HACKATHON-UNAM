@@ -1,0 +1,94 @@
+add client...
+
+<br>
+
+  <div class="row">
+       <div class="col-sm-12">
+      <div class="product-detail">
+          <form class="needs-validation" #addClientForm="ngForm" (ngSubmit)="createClient(addClientForm)">
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="rfc">Rfc</label>
+                  <input type="text" class="form-control" id="rfc" name="rfc" [(ngModel)]="client.rfc" placeholder="rfc"
+                    value="" required>
+                  <div class="invalid-feedback">
+                    Rfc is required.
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="name">Nombre</label>
+                  <input type="text" class="form-control" id="name" name="name" [(ngModel)]="name"
+                    placeholder="Nombre" value="" required>
+                  <div class="invalid-feedback">
+                    Nombre es required.
+                  </div>
+                </div>
+              </div>
+    
+              <div class="mb-3">
+                <label for="address">Direccion
+                  <span class="text-muted">(Optional)</span>
+                </label>
+                <textarea type="text" class="form-control" id="address" placeholder="Direccion" name="address"
+                  [(ngModel)]="client.address"></textarea>
+              </div>
+    
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="col">Colonia</label>
+                  <input name="col" class="form-control" [(ngModel)]="client.col" placeholder="Colonia"
+                    id="col" value="" required>
+                  <div class="invalid-feedback">
+                    Colonia is required.
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="city">Ciudad</label>
+                  <input type="text" class="form-control" id="city" name="city" [(ngModel)]="client.city" placeholder="Ciudad"
+                    value="" required>
+                  <div class="invalid-feedback">
+                    Ciudad is required.
+                  </div>
+                </div>
+              </div>
+    
+              <div class="mb-3">
+                <label for="state">Estado</label>
+                <input type="text" class="form-control" id="state" [(ngModel)]="client.state" name="state" placeholder="Estado"
+                  required>
+              </div>
+
+              <div class="mb-3">
+                <label for="country">Pais</label>
+                <input type="text" class="form-control" id="country" [(ngModel)]="client.country" name="country"
+                  placeholder="Pais" required>
+              </div>
+    
+              <div class="mb-3">
+                  <label for="postalcode">Codigo Postal</label>
+                  <input type="text" class="form-control" id="postalcode" [(ngModel)]="client.postalcode" name="postalcode"
+                    placeholder="postal code" required>
+                </div>
+   
+
+              <div class="mb-3">
+                  <label for="usocfdi">Uso Cfdi</label>
+                  <input type="text" class="form-control" id="usocfdi" [(ngModel)]="client.usocfdi" name="usocfdi"
+                    placeholder="Uso cfdi" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="cuentabanco">Cuenta banco</label>
+                    <input type="text" class="form-control" id="cuentabanco" [(ngModel)]="client.cuentabanco" name="cuentabanco"
+                      placeholder="cuenta banco" required>
+                  </div>
+  
+             
+                    <hr class="mb-4">
+    
+              <button class="btn btn-primary btn-lg btn-block" type="submit">Add Cliente</button>
+            </form>
+      </div>
+    </div>
+  </div>
+

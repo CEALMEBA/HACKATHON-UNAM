@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Home" android:id="@+id/id_home" android:icon="@drawable/ic_home_black_24dp"/>
+    <item android:title="Mapa" android:id="@+id/id_maps" android:icon="@drawable/mapa"/>
+    <item android:title="Rutas" android:id="@+id/id_rutas" android:icon="@drawable/rutagps"/>
+    <item android:title="Configuration" android:id="@+id/id_configuration" android:icon="@drawable/ic_notifications_black_24dp"/>
+
+
+</menu>

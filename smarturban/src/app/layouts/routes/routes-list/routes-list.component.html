@@ -1,0 +1,106 @@
+<br>
+
+
+  <div class="row" *ngIf="authService.isAdmin()">
+
+    <div class="col-sm">
+      <!--
+      <div class="float-right">
+        <button type="button" class="btn btn-primary waves-light" data-toggle="modal" data-target="#exampleModalLong">
+          Add Product
+        </button>
+      </div>
+    -->
+    <div class="float-right">
+      <a [routerLink]="['/routes/add-routes']" routerLinkActive="router-link-active">
+      <button type="button" class="btn btn-primary waves-light" data-toggle="modal">
+
+          
+            Add Routes
+   </button>
+  </a>
+    </div>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2">
+      <div class="form-group">
+        <label for="brand_select">Clients :</label>
+        <select class="form-control" name="" id="brand_select" [(ngModel)]="selectedBrand">
+          <option *ngFor="let brand of brands" [ngValue]="brand">{{brand}}</option>
+        </select>
+      </div>
+      <ul class="list-group">
+        <li class="list-group-item">Cras justo odio</li>
+        <li class="list-group-item">Dapibus ac facilisis in</li>
+        <li class="list-group-item">Morbi leo risus</li>
+      </ul>
+    </div>
+    <div class="col-md-9">
+
+      <div class="container">
+        <app-card-loader [loop]="3" [height]="400" *ngIf="loading"></app-card-loader>
+        <div class="row" *ngIf="!loading">
+          <!-- List of Products -->
+          <div class="col-sm-3 mb-2" *ngFor="let product of productList | filterByBrand: selectedBrand | paginate: { itemsPerPage: 6, currentPage: page }">
+            <div class="item">
+              <div class=" mb-r">
+                <!--Card-->
+                <div class="card card-cascade wider">
+                  
+                  <!--Card content-->
+                  <div class="card-body text-center no-padding">
+                    <!--Category & Title-->
+                    <p class="card-title">
+                      <strong>
+                        <a [routerLink]="['/routes/route', product.$key]" routerLinkActive="router-link-active"> Ruta: {{
+                          product.source }} - {{ product.target }}</a>
+                      </strong>
+                    </p>
+                    <!--Description-->
+                    <p class="card-text"> Nombre clave: {{ product.nombrekey }}
+                    </p>
+
+                    <p class="card-text"> Status: {{ product.status }}
+                    </p>
+
+                    <p class="card-text"> Duracion: {{ product.duration }} min
+                    </p>
+                    <!--Card footer     [routerLink]="['/buses/add-bus']"-->
+                    <div class="card-footer">
+                      <span class="right margin">
+                        <a placement="top" mdbTooltip="Modify" container="body" [routerLink]="['/routes/route', product.$key]" >
+                          <i class="fa fa-pencil"></i>
+                        </a>
+
+                        <a placement="top" mdbTooltip="Remove routes" container="body" *ngIf="authService.isAdmin()"
+                          (click)="deleteRoutes(product.$key)">
+                          <i class="fa fa-trash"></i>
+                        </a>
+                      </span>
+                    </div>
+
+                  </div>
+                  <!--/.Card content-->
+
+                </div>
+                <!--/.Card-->
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Pagination -->
+        <div class="text-center mt-3">
+          <pagination-controls (pageChange)="page = $event"></pagination-controls>
+        </div>
+      </div>
+      <!--/.Card-->
+    </div>
+  </div>
+
+<!--
+<app-add-product></app-add-product>
+-->

@@ -1,0 +1,99 @@
+
+          <div id="floating-panel">
+            <input (click)="deletePoint()" type=button value="delete" *ngIf="authService.isAdmin()">
+            <input onclick="showMarkers();" type=button value="Show All Markers">
+            <input onclick="deleteMarkers();" type=button value="Delete Markers">
+          </div>
+            
+              <!--<div class="form-group">
+                <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl">
+              </div>-->
+                      <agm-map 
+                        [latitude]="lat" 
+                        [longitude]="lng" 
+                        [zoom]="myzoom"
+                        [mapTypeId]="mapType"
+                        (mapReady)="mapReady($event)"
+                        (mapClick)="addMarker($event.coords.lat, $event.coords.lng)"
+                          
+                        >
+                
+                        <agm-marker
+                        *ngFor="let marker of productList"
+                        [latitude]="marker.lat"
+                        [longitude]="marker.lng"
+                        (markerClick)="selectMarker($event)"
+                        [label]="{color: marker.color, fontWeight: 'bold', fontSize: '20px', text: marker.description}"
+                        [iconUrl]="marker.img"
+                        (mouseOver)="onMouseOver(infoWindow,gm)"
+                        (mouseOut)="onMouseOut(infoWindow, gm)"
+                        >
+
+
+                      <agm-info-window
+                                    [disableAutoPan]="false" 
+                                    #infoWindow
+                                    [maxWidth]="150">
+                                    <div class="container">
+                                        <p class="font-weight-bold">
+                                            {{marker.description}}
+                                        </p>
+                                    </div>
+                                </agm-info-window>
+                        
+                              </agm-marker>
+                              <!--
+                                 <agm-polyline [strokeColor]="'#A314FF'" 
+                              [visible]="true"
+                              [strokeWeight]="3">
+                               <agm-polyline-point
+                                 *ngFor="let marker of productList; let i=index"
+                                 [latitude]="marker.lat"
+                                 [longitude]="marker.lng">
+                       
+                               </agm-polyline-point>
+                             </agm-polyline>
+                            -->
+
+                        <!--   
+                      
+                      <agm-rectangle
+                        [north]="max('lat')"
+                        [east]="max('lng')"
+                        [south]="min('lat')"
+                        [west]="min('lng')">
+                      </agm-rectangle>
+                        <agm-polygon
+                        [geodesic]="true"
+                        [strokeColor]=""
+                        [strokeOpacity]="0.3"
+                        [fillOpacity]="0.0"
+                        [strokeWeight]="3">
+                    
+                        [paths]="markersOnMap">
+                            <agm-marker
+                                [label]="labelOptions"
+                                *ngFor="let marker of markersOnMap; index as i"
+                                [latitude]="marker.lat" 
+                                [longitude]="marker.lng"
+                                [label]="marker.pos"
+                                [iconUrl]="marker.image_url"> 
+                                <agm-info-window
+                                    [maxWidth]="150">
+                                    <div class="container">
+                                        <p class="font-weight-bold">
+                                            {{marker.name}}
+                                        </p>
+                                        <img 
+                                            src="{{marker.image_url}}" 
+                                            class="img-thumbnail"
+                                            *ngIf="marker.image_url.length > 5">
+                                    </div>
+                                </agm-info-window>
+                            </agm-marker>
+                          
+                    </agm-polygon>
+                  -->
+    
+                  </agm-map>
+    
