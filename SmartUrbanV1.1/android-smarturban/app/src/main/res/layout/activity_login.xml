@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true"
+    android:background="@drawable/minimalist8">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:paddingTop="10dp"
+        >
+
+        <ImageView
+            android:id="@+id/idImg"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/bus"
+            android:layout_marginBottom="40dp"
+            android:layout_marginTop="10dp"/>
+
+
+        <!--
+                <ImageView
+                    android:id="@+id/main_progress"
+                    android:layout_width="150dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:visibility="visible" />-->
+
+
+
+
+        <!--  Email Label -->
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_user"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="28dp">
+
+            <EditText
+                android:id="@+id/edtUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Usuario o correo electrónico"
+                android:text=""
+                android:inputType="textEmailAddress" />
+        </android.support.design.widget.TextInputLayout>
+
+        <!--  Password Label -->
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="28dp"
+            android:layout_marginTop="8dp">
+
+            <EditText
+                android:id="@+id/edtPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Contraseña"
+                android:text=""
+                android:inputType="textPassword" />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_above="@+id/btnSkip"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/bordercolor_button"
+            android:text="login"
+            android:textAllCaps="false"
+            android:onClick="btnLogin"
+            android:textColor="#04394e"
+            android:textSize="16sp" />
+
+
+        <!--
+        <TextView
+            android:id="@+id/link_signup"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:gravity="center"
+            android:text="No account yet? Create one"
+            android:textSize="16dip" />-->
+
+
+    </LinearLayout>
+</LinearLayout>
+</ScrollView>
